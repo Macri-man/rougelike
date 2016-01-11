@@ -1,5 +1,4 @@
-package rougelike
-
+package main
 
 import (
 	"fmt"
@@ -7,16 +6,16 @@ import (
 
 type player struct {
 	x,y int
+	char rune
 	hp int
 	name string
-	armory map[string]armor
-	inventory map[string]item
 	weapons map[string]weapon
+	armory map[string]armor
+	food map[string]consumable
+	magic map[string]magicObject
 }
 
 type user interface {
-	pickItem(state *State)
-	releaseItem(state *State)
-	useItem(state *State)
-	equipeItem(state *State)
+	print()
+	move()
 }

@@ -1,4 +1,4 @@
-package rougelike
+package main
 
 import (
 	"fmt"
@@ -6,12 +6,15 @@ import (
 )
 
 
-//function for main loop
-
+const (
+	width  = 80
+	height = 24
+)
 
 func main(){
 	
 	//set up termbox
+	fmt.Printf("START")
 	err := termbox.Init()
 	if err != nil {
 		panic(err)
@@ -19,8 +22,19 @@ func main(){
 	defer termbox.Close()
 	termbox.SetInputMode(termbox.InputEsc)
 	termbox.HideCursor()
-
+	level := newLevel(80,24)
 	for {
+		level.Draw()
+		event := termbox.PollEvent()
+		switch event.Ch {
+		case 'w':
+		case 'a':
+		case 's':
+		case 'd':
 
+		case 'q':
+			break;
+		//updateMap()
+		}
 	}
 }

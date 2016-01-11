@@ -1,39 +1,63 @@
-package rougelike
-
+package main
 
 import (
 	"fmt"
 )
 
 type item interface {
-	action
-	user
+	print() 
 }
 
 type magicObject struct {
-	x,y int
-	item
 	level int
+	char rune
+	healthmod int
+	special int
 	name string
 }
 
 type weapon struct {
-	x,y int 
-	item
 	level int 
-	damage int 
+	char rune
+	healthmod int
+	durability int
 	special int
 	name string
 }
 
-type cosumable struct {
-	x,y int 
-	item
+type armor struct {
 	level int 
+	char rune
+	healthmod int
+	durability int
 	special int
 	name string
 }
 
-type action interface {
-	
+type consumable struct {
+	char rune
+	healthmod int
+	duration int
+	special int
+	name string
+}
+
+func (c consumable) print() {
+	fmt.Printf("%+v\n", c)
+}
+
+func (a armor) print() {
+	fmt.Printf("%+v\n", a)
+}
+
+func (m magicObject) print() {
+	fmt.Printf("%+v\n", m)
+}
+
+func (w weapon) print() {
+	fmt.Printf("%+v\n", w)	
+}
+
+func printItem(i item) {
+	i.print()
 }
